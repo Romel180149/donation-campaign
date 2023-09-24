@@ -5,14 +5,14 @@ import PhoneCard from "./PhoneCard";
 const Phone = () => {
   const [phone, setPhone] = useState({});
 
-  const { id } = useParams();
+  const { title } = useParams();
 
   const phones = useLoaderData();
 
   useEffect(() => {
 
     
-    const findPhone = phones?.find((phone) => phone.id === id);
+    const findPhone = phones?.find((phone) => phone.title === id);
 
     setPhone(findPhone);
   }, [id, phones]);

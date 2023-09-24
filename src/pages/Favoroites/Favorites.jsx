@@ -61,11 +61,11 @@ const Favorites = () => {
           <div className="grid grid-cols-2 gap-5">
             {
                 isShow ? favorites.map((phone) => (
-                    <FavoritesCard key={phone.id} phone={phone}></FavoritesCard>
+                    <FavoritesCard key={phone.title} phone={phone}></FavoritesCard>
                   )) 
                   
                   : favorites.slice(0,2).map((phone) => (
-                    <FavoritesCard key={phone.id} phone={phone}></FavoritesCard>
+                    <FavoritesCard key={phone.title} phone={phone}></FavoritesCard>
                   ))
             }
           </div>

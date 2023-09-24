@@ -13,7 +13,7 @@ const Phones = ({phones}) => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-10'>
                 {
-                    phones?.map(phone=><PhonesCard key={phone.id} phone={phone}></PhonesCard> )
+                    phones?.map(phone=><PhonesCard key={phone.title} phone={phone}></PhonesCard> )
                 }
             </div>
         </div>
