@@ -18,6 +18,9 @@ const FavoritesCard = ({phone}) => {
           <h4 className="mb-2 block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
             {category}
           </h4>
+          <p>
+            {description}
+            </p>
           
           <a className="inline-block" href="#">
             <button
