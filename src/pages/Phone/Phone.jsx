@@ -12,10 +12,10 @@ const Phone = () => {
   useEffect(() => {
 
     
-    const findPhone = phones?.find((phone) => phone.title === id);
+    const findPhone = phones?.find((phone) => phone.title === title);
 
     setPhone(findPhone);
-  }, [id, phones]);
+  }, [title, phones]);
 
 
   return (

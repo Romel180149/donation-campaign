@@ -1,10 +1,12 @@
 import React from 'react';
 
+
 const Logo = () => {
     return (
         <div>
-            
-            <h1 className='text-xl font-semibold'>Donation Campaign</h1>
+          
+         <img src="https://i.ibb.co/zm3bq1Q/Logo.png" alt="Logo" />
+          
         </div>
     );
 };
