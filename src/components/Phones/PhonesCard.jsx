@@ -8,18 +8,20 @@ const PhonesCard = ({ phone }) => {
   return (
     <div>
       <div className="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-        {card_bg}
-        <div className="relative mx-5 mt-2 h-75 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
+        
+        <div   className="relative mx-5 mt-2 h-75 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
           <img src={picture} className="h-full w-full object-cover" />
         </div>
         <div className="p-6">
-          <p className="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
-            {category}
-            
-          </p>
+         
+          <p className="block font-sans text-base font-medium leading-relaxed antialiased"
+  style={{ color: category_bg }}>
+  <div>{category}</div>
+</p>
+
           <div className="mb-2 flex items-center justify-between">
-            <p className="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
-              {title}
+            <p className="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased"  style={{ color: category_bg }} >
+              <div className="rounded-lg">{title}</div>
             </p>
             <p className="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
               ${price}
