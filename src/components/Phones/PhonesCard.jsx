@@ -32,9 +32,7 @@ const PhonesCard = ({ phone }) => {
                   <p className="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased" style={{ color: category_bg }} >
                     <div className={`rounded-b-lg`}>{title}</div>
                   </p>
-                  <p className="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
-                    ${price}
-                  </p>
+                 
                 </div>
                 <p className="block font-sans text-sm font-normal leading-normal text-gray-700 antialiased opacity-75">
 
