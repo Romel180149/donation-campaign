@@ -34,9 +34,9 @@ const PhonesCard = ({ phone }) => {
               className="relative flex w-full  flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
               style={cardStyle}
             >
-              <div className="relative mx-5 mx-auto mt-2 h-75 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
-                <img src={picture} className="h-full w-full object-cover px-0 mt-0" />
-              </div>
+              {/* Place the image above the card */}
+              <img src={picture} className="h-full w-full object-cover px-0 mt-0" />
+
               <div className="p-6">
                 <button className="pr-48 mr-2 border" style={cardStyle}>
                   <p

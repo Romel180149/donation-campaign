@@ -24,7 +24,7 @@ const PhoneCard = ({ phone }) => {
     if (!favoriteItems) {
       addedFavoritesArray.push(phone);
       localStorage.setItem("favorites", JSON.stringify(addedFavoritesArray));
-      swal("Good job!", "Product added successfully!", "success");
+      swal("Good job!", "Donation added successfully!", "success");
     } else {
       // Check if the phone is already in favorites
       const isExists = favoriteItems.find((favPhone) => favPhone.title === title);
@@ -32,7 +32,7 @@ const PhoneCard = ({ phone }) => {
       if (!isExists) {
         addedFavoritesArray.push(...favoriteItems, phone);
         localStorage.setItem("favorites", JSON.stringify(addedFavoritesArray));
-        swal("Good job!", "Product added successfully!", "success");
+        swal("Good job!", "Donation added successfully!", "success");
       } else {
         swal("You have already donated!", "error");
       }
@@ -73,10 +73,10 @@ const PhoneCard = ({ phone }) => {
 
   return (
     <div style={cardStyle}>
-      <img src={picture} alt="picture" style={imageStyle}/>
+      <img src={picture} alt="picture" style={imageStyle}  />
 
       <div style={overlayStyle}>
-        <a href="#" className="mt-2">
+        <p className="mt-2">
           <button
             onClick={handleAddToFavorites}
             className={`flex select-none text-white items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
@@ -85,7 +85,7 @@ const PhoneCard = ({ phone }) => {
           >
             DONATE ${price}
           </button>
-        </a>
+        </p>
       </div>
 
       <div className="p-3">

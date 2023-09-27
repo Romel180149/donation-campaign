@@ -5,6 +5,8 @@ import Favorites from "../pages/Favoroites/Favorites";
 import Login from "../pages/Login/Login";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Phone from "../pages/Phone/Phone";
+import { PieChart } from "react-minimal-pie-chart";
+
 
 
 const myCreatedRoute =  createBrowserRouter([
@@ -27,6 +29,7 @@ const myCreatedRoute =  createBrowserRouter([
                 path : "/login",
                 element : <Login></Login>
             },
+          
             {
                 path : "/phones/:title",
                 element : <Phone></Phone>,
