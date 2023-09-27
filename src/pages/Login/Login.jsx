@@ -1,27 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { PieChart } from "react-minimal-pie-chart";
+import PhoneCard from "../Phone/PhoneCard";
 
 const Login = () => {
-  // Initialize price and totalPrice as state variables
-  const [price, setPrice] = useState(0); // Example initial price
-  const [totalPrice, setTotalPrice] = useState(0); // Example initial total price
+  const [price, setPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
-  // Simulate dynamic updates to price and totalPrice
-  useEffect(() => {
-    // Example: Update price and totalPrice every 5 seconds
-    const intervalId = setInterval(() => {
-      setPrice(Math.random() * 50); // Update price with a random value
-      setTotalPrice(Math.random() * 100); // Update totalPrice with a random value
-    }, 5000);
+  const handleDonate = () => {
+    const newPrice = price + Math.random() * 10; // Add a random donation amount
+    const newTotalPrice = totalPrice + newPrice; // Update total donation amount
+    setPrice(newPrice);
+    setTotalPrice(newTotalPrice);
+  };
 
-    // Clean up the interval when the component unmounts
-    return () => clearInterval(intervalId);
-  }, []);
-
-  // Create a data array for the pie chart
   const pieChartData = [
-    { title: "Price", value: price, color: "#E38627" },
-    { title: "Total Price", value: totalPrice, color: "#C13C37" },
+    { title: "Donation", value: price, color: "#E38627" },
+    { title: "Total Donation", value: totalPrice, color: "#C13C37" },
   ];
 
   return (
@@ -29,11 +23,12 @@ const Login = () => {
       <PieChart data={pieChartData} />
       <div className="text-center">
         <div>
-          <span style={{ color: "#E38627" }}>Donation:</span> {price}
+          <span style={{ color: "#E38627" }}> Your Donation:</span> {price}
         </div>
         <div>
           <span style={{ color: "#C13C37" }}>Total Donation:</span> {totalPrice}
         </div>
+        <button onClick={handleDonate}>Donate</button>
       </div>
     </div>
   );
