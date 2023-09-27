@@ -49,12 +49,12 @@ const Favorites = () => {
             <div>
                 <button
               onClick={handleRemove}
-              className="px-5 bg-green-200 block mx-auto"
+              className="px-5  bg-green-500 block mx-auto"
             >
-              Deleted All favorites
+              Deleted All donation
             </button>
 
-            <h1>Total price : {totalPrice}</h1>
+            {/* <h1>Total price : {totalPrice}</h1> */}
             </div>
           )}
 
@@ -70,8 +70,8 @@ const Favorites = () => {
             }
           </div>
 
-          {favorites.length > 2 && <button onClick={()=>setIsShow(!isShow)} className="px-5 bg-green-200 block mx-auto">
-            {isShow ? "See less" : "See more"}
+          {favorites.length > 2 && <button onClick={()=>setIsShow(!isShow)} className="px-5 my-4  bg-green-500 block mx-auto">
+            {isShow ? "See less" : "See all"}
           </button>}
         </div>
       )}

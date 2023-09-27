@@ -2,118 +2,97 @@ import React from "react";
 import swal from "sweetalert";
 
 const PhoneCard = ({ phone }) => {
-  const {  picture,title, category, category_bg, card_bg, text_button_bg,description,price } = phone || {};
+  const {
+    picture,
+    title,
+    category,
+    category_bg,
+    card_bg,
+    text_button_bg,
+    description,
+    price,
+    totalPrice,
+    id,
+  } = phone || {};
 
   const handleAddToFavorites = () => {
     const addedFavoritesArray = [];
 
     const favoriteItems = JSON.parse(localStorage.getItem("favorites"));
 
-    //jokhon kisu nai tokhon e if vitor dhukba
+    // When there are no favorite items yet
     if (!favoriteItems) {
       addedFavoritesArray.push(phone);
       localStorage.setItem("favorites", JSON.stringify(addedFavoritesArray));
-      swal("Good job!", "Products added successfully!", "success");
-    } 
-    
-    else {
+      swal("Good job!", "Product added successfully!", "success");
+    } else {
+      // Check if the phone is already in favorites
+      const isExists = favoriteItems.find((favPhone) => favPhone.title === title);
 
-
-      const isExits = favoriteItems.find((phone) => phone.title === title);
-
-      
-      if (!isExits) {
-
+      if (!isExists) {
         addedFavoritesArray.push(...favoriteItems, phone);
         localStorage.setItem("favorites", JSON.stringify(addedFavoritesArray));
-        swal("Good job!", "Products added successfully!", "success");
-       
+        swal("Good job!", "Product added successfully!", "success");
       } else {
-        swal("Error!", "No duplicate !", "error");
+        swal("You have already donated!", "error");
       }
-
-    
-
-
     }
+  };
 
+  // Define dynamic button style based on category_bg
+  const buttonStyle = {
+    backgroundColor: category_bg, // Set button background color based on category_bg
+  };
 
+  const cardStyle = {
+    position: "",
+    border: "1px solid #ccc",
+    borderRadius: "8px",
+    overflow: "hidden",
+  };
 
-    // localStorage.setItem('test',JSON.stringify([{name:"hasib"},{name:"ph"}]))
+  const imageStyle = {
+    width: "68%",
+    height: "auto",
+    display: "block",
+  };
+
+  const overlayStyle = {
+    position: "absolute",
+    bottom: "0",
+    left: "8",
+    width: "80%",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    padding: "16px",
+
+    boxSizing: "border-box",
   };
 
   return (
-    <div className="flex justify-center items-center h-[80vh]">
-      <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-        <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
-          <img src={picture} alt="picture" className="h-full w-full object-cover" />
-          
-          <p className="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
-              ${price}
-            
-          </p>
-          {/* <a className="inline-block" href="#">
-            <button
-              onClick={handleAddToFavorites}
-              className="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              type="button"
-            >
-              Add To favorites
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                aria-hidden="true"
-                className="h-4 w-4"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                ></path>
-              </svg>
-            </button>
-          </a> */}
-        </div>
-        <div className="p-6">
-          <h6 className="mb-4 block font-sans text-base font-semibold uppercase leading-relaxed tracking-normal text-pink-500 antialiased">
-            {title}
-          </h6>
-          <p><small>
-            {description}
-            </small></p>
-  
-          <p>
-            
-          </p>
+    <div style={cardStyle}>
+      <img src={picture} alt="picture" style={imageStyle}/>
 
-          <a className="inline-block" href="#">
-            <button
-              onClick={handleAddToFavorites}
-              className="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              type="button"
-            >
-              Add To favorites
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                aria-hidden="true"
-                className="h-4 w-4"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                ></path>
-              </svg>
-            </button>
-          </a>
-        </div>
+      <div style={overlayStyle}>
+        <a href="#" className="mt-2">
+          <button
+            onClick={handleAddToFavorites}
+            className={`flex select-none text-white items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
+            style={buttonStyle}
+            type="button"
+          >
+            DONATE ${price}
+          </button>
+        </a>
+      </div>
+
+      <div className="p-3">
+        <h6 className="mb-2 block  font-sans text-base font-semibold uppercase leading-relaxed tracking-normal antialiased text-gray-900">
+          {title}
+        </h6>
+        <p className="mb-0 font-sans text-sm text-gray-700">{description}</p>
       </div>
     </div>
   );

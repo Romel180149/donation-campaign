@@ -1,33 +1,41 @@
-import React, { useContext } from "react";
-import { useOutletContext } from "react-router-dom";
-import { GlobalContex2, GlobalContext } from "../../main";
-import { PieChart } from 'react-minimal-pie-chart';
+import React, { useState, useEffect } from "react";
+import { PieChart } from "react-minimal-pie-chart";
 
 const Login = () => {
+  // Initialize price and totalPrice as state variables
+  const [price, setPrice] = useState(0); // Example initial price
+  const [totalPrice, setTotalPrice] = useState(0); // Example initial total price
 
+  // Simulate dynamic updates to price and totalPrice
+  useEffect(() => {
+    // Example: Update price and totalPrice every 5 seconds
+    const intervalId = setInterval(() => {
+      setPrice(Math.random() * 50); // Update price with a random value
+      setTotalPrice(Math.random() * 100); // Update totalPrice with a random value
+    }, 5000);
 
-  const globalValue = useOutletContext()
-  console.log(globalValue);
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, []);
 
-  const contextApivalue = useContext(GlobalContext)
-  const contextApivalue2 = useContext(GlobalContex2)
-
-  console.log("context vbalue", contextApivalue);
-  console.log("context vbalue", contextApivalue2);
+  // Create a data array for the pie chart
+  const pieChartData = [
+    { title: "Price", value: price, color: "#E38627" },
+    { title: "Total Price", value: totalPrice, color: "#C13C37" },
+  ];
 
   return (
-   <div className="w-50 h-60">
-   
-    <PieChart
-  data={[
-    { title: 'One', value: 10, color: '#E38627' },
-    { title: 'Two', value: 15, color: '#C13C37' },
-  
-  ]}
-  
-/>;
- 
-   </div>
+    <div className="w-50 h-60">
+      <PieChart data={pieChartData} />
+      <div className="text-center">
+        <div>
+          <span style={{ color: "#E38627" }}>Donation:</span> {price}
+        </div>
+        <div>
+          <span style={{ color: "#C13C37" }}>Total Donation:</span> {totalPrice}
+        </div>
+      </div>
+    </div>
   );
 };
 
